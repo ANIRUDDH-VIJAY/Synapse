@@ -2,13 +2,13 @@
   "name": "synapse",
   "version": "1.0.0",
   "description": "A MERN based chatbot implemented from scratch using Google Gemini API.",
-  "main": "backend/server.js",
+  "main": "Backend/server.js",
   "type": "module",
   "scripts": {
-    "start": "node backend/server.js",
+    "start": "node Backend/server.js",
     "dev:frontend": "vite --force",
-    "dev:backend": "nodemon backend/server.js",
-    "dev": "concurrently \"npm:dev:frontend\" \"npm:dev:backend\"",
+    "dev:backend": "nodemon Backend/server.js",
+    "dev": "concurrently \"npm:dev:frontend\" \"npm:dev:Backend\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
