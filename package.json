@@ -8,7 +8,7 @@
     "start": "node Backend/server.js",
     "dev:frontend": "vite --force",
     "dev:backend": "nodemon Backend/server.js",
-    "dev": "concurrently \"npm:dev:frontend\" \"npm:dev:Backend\"",
+    "dev": "concurrently \"npm:dev:frontend\" \"npm:dev:backend\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
