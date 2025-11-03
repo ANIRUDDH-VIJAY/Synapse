@@ -5,27 +5,38 @@ import mongoose from "mongoose";
 import chatRoutes from "./routes/chat.js";
 
 const app = express();
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
+// Middleware
 app.use(express.json());
 app.use(cors());
 
+// Routes
 app.use("/api", chatRoutes);
 
-app.listen(PORT, () => {
-    console.log(`server running on ${PORT}`);
-    connectDB();
+// Root route
+app.get("/", (req, res) => {
+  res.send("Backend running successfully!");
 });
 
-const connectDB = async() => {
-    try {
-        await mongoose.connect(process.env.MONGODB_URI);
-        console.log("Connected with Database!");
-    } catch(err) {
-        console.log("Failed to connect with Db", err);
-    }
-}
+// Connect to MongoDB
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGODB_URI);
+    console.log("Connected with Database!");
+  } catch (err) {
+    console.error("Failed to connect with DB", err);
+    process.exit(1);
+  }
+};
 
+// Start server only after DB connects
+const startServer = async () => {
+  await connectDB();
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+};
+
+startServer();
 
 // app.post("/test", async (req, res) => {
 //     const options = {

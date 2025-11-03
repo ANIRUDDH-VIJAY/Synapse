@@ -6,13 +6,11 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      // This proxies any request starting with /api
-      // to your backend server at http://localhost:8080
       '/api': {
-        target: 'http://localhost:8080',
+        target: 'https://synapse-backend-kgqy.onrender.com',
         changeOrigin: true,
         secure: false,
-      }
-    }
-  }
-})
+      },
+    },
+  },
+});
